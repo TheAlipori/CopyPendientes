@@ -6,26 +6,27 @@ import { CreateTodoButton } from "../CreateTodoButton";
 import { TodosLoading } from "../TodosLoading";
 import { TodosError } from "../TodosError";
 import { EmptyTodos } from "../EmptyTodos";
+import { TodoContext } from "../TodoContext";
+import { TodoForm } from "../TodoForm";
+import React from "react";
+import { Modal } from "../Modal";
+function AppUI() {
+  const {
+    loading,
+    error,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    openModal,
+    setOpenModal,
+  } = React.useContext(TodoContext);
 
-function AppUI({
-  loading,
-  error,
-  completedTodos,
-  totalTodos,
-  searchValue,
-  setSearchValue,
-  searchedTodos,
-  completeTodo,
-  deleteTodo,
-}) {
   return (
     <>
       <div className="container">
         <img src="/isologo.png" className="logo"></img>
-
-        <TodoCounter completed={completedTodos} total={totalTodos} />
-        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-
+        <TodoCounter />
+        <TodoSearch />
         <TodoList>
           {loading && (
             <>
@@ -49,6 +50,11 @@ function AppUI({
         </TodoList>
 
         <CreateTodoButton />
+        {openModal && (
+          <Modal>
+            <TodoForm />
+          </Modal>
+        )}
       </div>
     </>
   );
