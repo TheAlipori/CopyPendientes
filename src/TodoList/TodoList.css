@@ -1,0 +1,7 @@
+ul {
+    list-style-type: none; /* Elimina los puntos predeterminados */
+    padding: 0; /* Elimina el padding interno */
+    margin: 0; /* Elimina el margen externo */
+    padding-bottom: 60px;
+  }
+  

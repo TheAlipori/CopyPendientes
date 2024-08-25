@@ -1,0 +1,34 @@
+.CreateTodoButton {
+  background-color: white; /* Color de fondo azul */
+  color: hsl(208, 73%, 42%); /* Color del texto blanco */
+  padding: 10px;
+  border: 5px solid #1D70B7; /* Elimina el borde predeterminado */
+  border-radius: 50%; /* Hace que el botón sea redondo */
+  width: 60px; /* Ajusta el tamaño del botón */
+  height: 60px; /* Igual al ancho para que sea un círculo */
+  font-size: 20px; /* Tamaño de fuente */
+  cursor: pointer; /* Cambia el cursor cuando se pasa sobre el botón */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Suaviza el cambio de color y el efecto de transformación */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 35px; /* Tamaño de fuente más grande para el '+' */
+  font-weight: bold; /* Asegura que el símbolo '+' sea visible y grueso */
+
+  }
+  
+  .CreateTodoButton:hover {
+    background-color: #1D70B7; /* Color de fondo al pasar el ratón por encima */
+    color: white;
+    transform: rotate(360deg); /* Gira el símbolo al hacer hover */
+
+  }
+  
+  .CreateTodoButton:active {
+    transform: scale(1.20); /* Efecto de pulsación al hacer clic */
+  }
+  .centered-button {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }

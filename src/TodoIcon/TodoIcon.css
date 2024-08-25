@@ -1,0 +1,25 @@
+.Icon-container {
+  }
+  .Icon-container-delete {
+    cursor: pointer;
+    color: #BD1622;
+  }
+  .Icon-container-check {
+    cursor : pointer;
+     color: #0078D7;
+  }
+  
+  
+  
+  
+  .Icon-svg{
+    font-size: 2.5rem;
+    
+  }
+  
+  .Icon-container-delete:hover .Icon-svg{
+    fill: red;
+  }
+  .Icon-container-check:hover .Icon-svg{
+    fill: green;
+  }

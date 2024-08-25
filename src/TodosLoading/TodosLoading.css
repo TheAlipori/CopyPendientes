@@ -1,0 +1,45 @@
+.skeleton {
+  background-color: #e0e0e0; /* Color base para el skeleton */
+  border-radius: 10px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Skeleton para los íconos (CompleteIcon y DeleteIcon) */
+.CompleteIcon.skeleton,
+.DeleteIcon.skeleton {
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+}
+
+/* Skeleton para el texto */
+.skeleton-text {
+  flex-grow: 1;
+  height: 20px;
+  margin: 0 10px;
+}
+
+/* Animación de pulsación */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Ajustes para que coincida con la estructura de TodoItem */
+.TodoItem.loading {
+  display: flex;
+  align-items: center;
+  border: 5px solid #e0e0e0; /* Mismo color de fondo para el borde */
+  border-radius: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  transition: none; /* Desactivar transiciones para el loading state */
+}

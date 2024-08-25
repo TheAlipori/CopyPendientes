@@ -1,0 +1,24 @@
+.empty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background-color: #f0f8ff; /* Color de fondo claro y amigable */
+    border: 2px dashed #0078d7; /* Borde punteado que sugiere acción */
+    border-radius: 15px;
+    margin: 20px;
+  }
+  
+  .empty-message {
+    font-size: 24px;
+    font-weight: bold;
+    color: #0078d7; /* Color azul que coincide con tu esquema */
+    margin: 0;
+  }
+  
+  .empty-instruction {
+    font-size: 16px;
+    color: #555; /* Texto adicional con color gris suave */
+    margin: 10px 0 0 0;
+  }

@@ -1,0 +1,39 @@
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #ffdddd;
+    border: 2px solid #ff4c4c;
+    border-radius: 10px;
+    margin: 20px;
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  .error-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+  }
+  
+  .error-message {
+    color: #ff4c4c;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-10px);
+    }
+    50% {
+      transform: translateX(10px);
+    }
+    75% {
+      transform: translateX(-10px);
+    }
+  }

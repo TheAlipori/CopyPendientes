@@ -1,0 +1,35 @@
+.TodoItem {
+  display: flex; /* Usa flexbox para alinear los elementos en una fila */
+  align-items: center; /* Alinea verticalmente el contenido del <li> */
+  border: 5px solid #0078D7; /* Borde azul para cada ítem */
+  border-radius: 20px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+  margin-bottom: 10px; /* Espacio entre ítems */
+  background-color: white; /* Color de fondo claro */
+  transition: background-color 0.3s ease; 
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  /* Suaviza el cambio de color de fondo */
+}
+.TodoItem:hover {
+  transform: scale(1.04);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  
+}
+.TodoItem p {
+  color: #0078D7; /* Color de texto predeterminado */
+  margin: 0; /* Elimina el margen predeterminado del <p> */
+  flex-grow: 1; /* Hace que el <p> ocupe el espacio disponible */
+  font-weight: bold;
+}
+
+.TodoItem span {
+  margin: 0 10px; /* Espacio horizontal entre los <span> y el <p> */
+}
+  
+.TodoItem-p{
+  text-decoration: no;
+}
+.TodoItem-p--complete{
+text-decoration: line-through;
+}
+

@@ -1,0 +1,20 @@
+input {
+  margin-bottom: 50px;
+  border: 6px solid #007acc; /* Borde azul de 6px */
+  border-radius: 25px; /* Bordes redondeados */
+  padding: 10px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  width: 100%; /* Ocupar todo el ancho del contenedor */
+  box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total del input */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Suaviza el cambio de color del borde y la sombra */
+}
+
+input:hover {
+  border-color: #00508F; /* Cambia el color del borde al pasar el ratón */
+}
+
+input:focus {
+  border-color: #007acc; /* Cambia el color del borde cuando el campo está enfocado */
+  outline: none; /* Elimina el contorno predeterminado del navegador */
+  box-shadow: 0 0 8px rgba(0, 122, 204, 0.5); /* Agrega una sombra sutil al enfocarse */
+}
