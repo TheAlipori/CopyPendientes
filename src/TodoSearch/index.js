@@ -7,7 +7,7 @@ function TodoSearch() {
     <div>
       <input
         type="text"
-        placeholder="Buscar pendiente"
+        placeholder="Buscar por numero de celular"
         value={searchValue}
         onChange={(event) => {
           setSearchValue(event.target.value);

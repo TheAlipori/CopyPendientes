@@ -20,6 +20,7 @@ function AppUI() {
     openModal,
     setOpenModal,
   } = React.useContext(TodoContext);
+  console.log(searchedTodos);
 
   return (
     <>
@@ -43,8 +44,11 @@ function AppUI() {
               key={todo.id}
               text={todo.text}
               completed={todo.completed}
+              dueDate={todo.dueDate}
+              description={todo.description}
               onComplete={() => completeTodo(todo.id)}
               onDelete={() => deleteTodo(todo.id)}
+              printType={todo.printType} // Pasando printType al TodoItem
             />
           ))}
         </TodoList>

@@ -21,10 +21,18 @@ function TodoProvider({ children }) {
     const searchText = searchValue.toLowerCase();
     return todoText.includes(searchText);
   });
-  const addTodo = (text) => {
+
+  const addTodo = (text, dueDate, description, printType) => {
     const newTodos = [...todos];
     const id = Date.now();
-    newTodos.push({ id, text, completed: false });
+    newTodos.push({
+      id,
+      text,
+      completed: false,
+      dueDate,
+      description,
+      printType, // Agregar el tipo de impresión
+    });
     saveTodos(newTodos);
   };
   const completeTodo = (id) => {

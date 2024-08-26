@@ -12,7 +12,7 @@ code {
   font-family: Quicksand
 }
 .container {
-  width:90%; /* Anchura del 90% del viewport */
+  width:80%; /* Anchura del 90% del viewport */
   
   margin: 40px auto 0 auto; /* Centrará el contenedor horizontalmente */
   padding: 20px; /* Espaciado interno */
@@ -42,5 +42,10 @@ code {
 @media (min-width: 1024px) {
   .container {
     width: 40%; /* El contenedor ocupará el 40% del ancho en pantallas grandes */
+  }
+}
+@media (min-width: 1524px) {
+  .container {
+    width: 20%; /* El contenedor ocupará el 40% del ancho en pantallas grandes */
   }
 }
