@@ -22,7 +22,7 @@ function TodoProvider({ children }) {
     return todoText.includes(searchText);
   });
 
-  const addTodo = (text, dueDate, description, printType, sides) => {
+  const addTodo = (text, dueDate, description, printType, sides, acabado) => {
     const newTodos = [...todos];
     const id = Date.now();
     newTodos.push({
@@ -33,6 +33,7 @@ function TodoProvider({ children }) {
       description,
       printType, // Agregar el tipo de impresión
       sides,
+      acabado,
     });
     saveTodos(newTodos);
   };

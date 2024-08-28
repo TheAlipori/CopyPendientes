@@ -29,11 +29,12 @@ function TodoItem(props) {
         </div>
       )}
 
-      {props.printType && props.sides && (
+      {props.printType && props.sides && props.acabado && (
         <div className="TodoItem-dueDateContainer">
           <FaPrint className="TodoItem-icon" />
           <p className="">
-            Detalles de impresión: {props.printType} | {props.sides}
+            Detalles de impresión: {props.printType} | {props.sides} |
+            {props.acabado}
           </p>
         </div>
       )}

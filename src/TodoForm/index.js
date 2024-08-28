@@ -9,10 +9,11 @@ function TodoForm() {
   const [description, setDescription] = React.useState("");
   const [printType, setPrintType] = React.useState(""); // Nuevo estado para el combobox
   const [sides, setSides] = React.useState("");
-
+  const [acabado, setAcabado] = React.useState("");
+  const [total, setTotal] = React.useState("");
   const onSubmit = (event) => {
     event.preventDefault();
-    addTodo(newTodoValue, dueDate, description, printType, sides);
+    addTodo(newTodoValue, dueDate, description, printType, sides, acabado);
     setOpenModal(false);
   };
 
@@ -71,6 +72,12 @@ function TodoForm() {
           <option value="">Selecciona una opción</option>
           <option value="x1 lado">x1 lado</option>
           <option value="x2 lados">x2 lados</option>
+        </select>
+        {/* acabado combobox */}
+        <select value={acabado} onChange={(e) => setAcabado(e.target.value)}>
+          <option value="">Selecciona una opción</option>
+          <option value="x1 lado">Grapado</option>
+          <option value="x2 lados">Engargolado</option>
         </select>
       </div>
       <div className="TodoForm-buttonContainer">

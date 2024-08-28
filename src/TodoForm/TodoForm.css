@@ -70,7 +70,8 @@ form {
     transform: scale(1.05);
   }
   select {
-    padding: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
@@ -79,7 +80,8 @@ form {
     color: #333;
     cursor: pointer;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    margin-left: 5px;
   }
   
   select:focus {
@@ -87,7 +89,7 @@ form {
     box-shadow: 0 0 5px rgba(0, 120, 215, 0.5);
   }
   .selectores {
-    display: flex; /* Usa flexbox para alinear los selects en una fila */
-    gap: 15px; /* Espacio entre los selects */
-    margin-bottom: 20px; /* Espacio debajo del contenedor */
+    display: flexbox; /* Usa flexbox para alinear los selects en una fila */
+    gap: 5px; /* Espacio entre los selects */
+    margin-bottom: 5px; /* Espacio debajo del contenedor */
   }
