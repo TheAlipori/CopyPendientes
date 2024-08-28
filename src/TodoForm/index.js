@@ -8,10 +8,11 @@ function TodoForm() {
   const [dueDate, setDueDate] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [printType, setPrintType] = React.useState(""); // Nuevo estado para el combobox
+  const [sides, setSides] = React.useState("");
 
   const onSubmit = (event) => {
     event.preventDefault();
-    addTodo(newTodoValue, dueDate, description, printType);
+    addTodo(newTodoValue, dueDate, description, printType, sides);
     setOpenModal(false);
   };
 
@@ -54,14 +55,24 @@ function TodoForm() {
         onChange={onChangeDate}
         required
       />
-      <label>Tipo de impresión</label>
-      <select value={printType} onChange={(e) => setPrintType(e.target.value)}>
-        <option value="">Selecciona una opción</option>
-        <option value="Color">Color</option>
-        <option value="Inyeccion de tinta">Inyección de tinta</option>
-        <option value="Escala de grises">Escala de grises</option>
-      </select>
+      <label>Detalles de impresion</label>
+      <div className="selectores">
+        <select
+          value={printType}
+          onChange={(e) => setPrintType(e.target.value)}
+        >
+          <option value="">Selecciona una opción</option>
+          <option value="Color">Color</option>
+          <option value="Inyeccion de tinta">Inyección de tinta</option>
+          <option value="Escala de grises">Escala de grises</option>
+        </select>
 
+        <select value={sides} onChange={(e) => setSides(e.target.value)}>
+          <option value="">Selecciona una opción</option>
+          <option value="x1 lado">x1 lado</option>
+          <option value="x2 lados">x2 lados</option>
+        </select>
+      </div>
       <div className="TodoForm-buttonContainer">
         <button
           type="button"

@@ -86,3 +86,8 @@ form {
     border-color: #0078d7;
     box-shadow: 0 0 5px rgba(0, 120, 215, 0.5);
   }
+  .selectores {
+    display: flex; /* Usa flexbox para alinear los selects en una fila */
+    gap: 15px; /* Espacio entre los selects */
+    margin-bottom: 20px; /* Espacio debajo del contenedor */
+  }

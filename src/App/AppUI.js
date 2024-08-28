@@ -49,6 +49,7 @@ function AppUI() {
               onComplete={() => completeTodo(todo.id)}
               onDelete={() => deleteTodo(todo.id)}
               printType={todo.printType} // Pasando printType al TodoItem
+              sides={todo.sides}
             />
           ))}
         </TodoList>
