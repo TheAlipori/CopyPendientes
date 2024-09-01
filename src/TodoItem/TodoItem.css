@@ -1,51 +1,53 @@
+/* Estilos para el contenedor de la lista */
 .TodoItem-container {
-  position: relative; /* Establece el contenedor como relativo para que los elementos hijos se posicionen en relación a él */
-  display: flex; /* Usa flexbox para alinear los elementos en una fila o columna */
-  flex-direction: column; /* Alinea los elementos en una columna */
-  align-items: flex-start; /* Alinea los elementos al inicio del contenedor */
-  border: 4px solid #0078D7; /* Borde azul para cada ítem */
-  border-radius: 12px; /* Bordes redondeados */
-  padding: 15px; /* Espaciado interno */
-  margin-bottom: 15px; /* Espacio entre ítems */
-  background-color: white; /* Color de fondo claro */
-  transition: background-color 0.3s ease, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Transiciones suaves */
-  width: 100%; /* Asegura que el ítem ocupe todo el ancho del contenedor */
-  box-sizing: border-box; /* Incluye padding y border en el ancho total */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  
+  border: 4px solid #0078D7;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: white;
+  transition: background-color 0.3s ease, transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  width: 100%;
+  box-sizing: border-box;
 }
-.deleteIcon {
-  position: absolute; /* Posiciona el ícono de borrar en una ubicación específica */
-  top: 10px; /* Ajusta el espacio desde la parte superior */
-  right: 10px; /* Ajusta el espacio desde el borde derecho */
-  font-size: 24px; /* Tamaño del ícono */
-  color: #0078D7; /* Color del ícono */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
-}
+
 .TodoItem-container:hover {
   transform: scale(1.04);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  
-}
-.TodoItem p {
-  color: #0078D7; /* Color de texto predeterminado */
-  margin: 0; /* Elimina el margen predeterminado del <p> */
-  flex-grow: 1; /* Hace que el <p> ocupe el espacio disponible */
-  font-weight: bold;
 }
 
-.TodoItem span {
-  margin: 0 10px; /* Espacio horizontal entre los <span> y el <p> */
-}
-  
-.TodoItem-p{
-  text-decoration: no;
+/* Estilos para cada ítem de la lista */
+.TodoItem-list {
   display: flex;
-  align-items: center; /* Alinea verticalmente el texto con el ícono */
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0; /* No agregar padding interno aquí */
+  margin-bottom: 5px;
+  width: 100%;
+  
 }
 
+.deleteIcon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  color: #0078D7;
+  cursor: pointer;
+}
 
-.TodoItem-dueDate {
-  font-size: 0.9em;
-  color: #666;
+/* Ajustes específicos para los párrafos secundarios */
+.subtitulo {
+  color: #0078D7;
+  font-weight: bolder;
+}
+.subtitulo2 {
+  color: #0078D7;
+  font-weight: bolder;
+  font-size: 20px;
 }
 
 .TodoItem-dueDateContainer {
@@ -53,39 +55,24 @@
   align-items: center;
   
 }
-
-.TodoItem-icon {
-  font-size: 34px;
-  size: 30px;
-  margin-right: 8px;
-  color: #0078D7; /* Ajusta el color según tu diseño */
-}
-
-.TodoItem-dueDate {
-  font-size: 14px;
-  
-  color: #333; /* Ajusta el color según tu diseño */
-}
-.TodoItem-description {
-  margin-top: 10px; /* Espacio arriba del campo de descripción */
-  padding: 10px;
-
-  background-color: #f4f4f4; /* Color de fondo suave */
-  border-left: 4px solid #0078D7; /* Línea de color para resaltar */
-  border-radius: 4px; /* Bordes redondeados */
-  font-size: 0.9rem; /* Tamaño de fuente */
-  color: #555; /* Color del texto */
-}
-.deleteIcon {
-  position: absolute; /* Posiciona el ícono de borrar en una ubicación específica */
-  top: 10px; /* Ajusta el espacio desde la parte superior */
-  right: 10px; /* Ajusta el espacio desde el borde derecho */
-  font-size: 24px; /* Tamaño del ícono */
-  color: #0078D7; /* Color del ícono */
-  cursor: pointer; /* Cambia el cursor al pasar sobre el ícono */
-}
-.TodoItem-combobox {
-  margin-top: 10px;
+.TodoItem-titulo {
+  border-radius: 30px;
   display: flex;
   align-items: center;
+  justify-content: center; /* Alinea el contenido del título de manera equitativa */
+  width: 100%; /* Asegura que ocupe todo el ancho disponible del contenedor */
+  padding: 0 50px; /* Ajusta el padding lateral para centrar */
+  box-sizing: border-box; /* Incluye padding en el cálculo del ancho total */
+
+  
 }
+
+/* Iconos dentro de los elementos de lista */
+.TodoItem-icon {
+  font-size: 24px; /* Tamaño ajustado del ícono */
+  margin-right: 8px;
+  color: #0078D7;
+  vertical-align: middle;
+}
+
+

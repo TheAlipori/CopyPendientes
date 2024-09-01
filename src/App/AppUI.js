@@ -20,8 +20,10 @@ function AppUI() {
     openModal,
     setOpenModal,
   } = React.useContext(TodoContext);
-  console.log(searchedTodos);
 
+  searchedTodos.forEach((todo) => {
+    console.log(todo.resta);
+  });
   return (
     <>
       <div className="container">
@@ -51,6 +53,9 @@ function AppUI() {
               printType={todo.printType} // Pasando printType al TodoItem
               sides={todo.sides}
               acabado={todo.acabado}
+              total={todo.total}
+              anticipo={todo.anticipo}
+              resta={todo.resta}
             />
           ))}
         </TodoList>

@@ -28,6 +28,15 @@ form {
     resize: none;
     margin-bottom: 10px;
   }
+  .inputstyle{
+    width: 180px; /* Ajusta el ancho según sea necesario */
+    margin-bottom: 10px; /* Espacio entre inputs */
+  }
+  .cantidades{
+    display: flex;
+    flex-direction: column; /* Para que los inputs se apilen verticalmente */
+    align-items: flex-end; /* Alinea los items al final del contenedor (derecha) */
+  }
   
   textarea::placeholder {
     color: #aaaaaa;
