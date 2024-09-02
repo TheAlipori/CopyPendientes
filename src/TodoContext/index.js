@@ -15,6 +15,7 @@ function TodoProvider({ children }) {
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
   const totalTodos = todos.length;
+  const [todoToEdit, setTodoToEdit] = React.useState(null);
 
   const searchedTodos = todos.filter((todo) => {
     const todoText = todo.text.toLowerCase();
@@ -66,6 +67,22 @@ function TodoProvider({ children }) {
       saveTodos(newTodos);
     }
   };
+  const editTodo = (updatedTodo) => {
+    const newTodos = todos.map((todo) =>
+      todo.id === updatedTodo.id ? updatedTodo : todo
+    );
+    saveTodos(newTodos);
+  };
+
+  const openEditModal = (id) => {
+    const todo = todos.find((todo) => todo.id === id);
+    setTodoToEdit(todo); // Establece el TODO para editar
+    setOpenModal(true);
+  };
+  const closeModal = () => {
+    setOpenModal(false);
+    setTodoToEdit(null); // Reinicia el estado de edición cuando el modal se cierra
+  };
 
   return (
     <TodoContext.Provider
@@ -82,6 +99,10 @@ function TodoProvider({ children }) {
         openModal,
         setOpenModal,
         addTodo,
+        editTodo, // Asegúrate de incluir esta función
+        openEditModal, // Asegúrate de incluir esta función
+        closeModal, // Asegúrate de incluir esta función
+        todoToEdit, // Asegúrate de incluir el todo a editar
       }}
     >
       {children}

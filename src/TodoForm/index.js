@@ -1,8 +1,10 @@
 import React from "react";
 import "./TodoForm.css";
+import { useEffect } from "react";
 import { TodoContext } from "../TodoContext";
 function TodoForm() {
-  const { setOpenModal, addTodo } = React.useContext(TodoContext);
+  const { setOpenModal, addTodo, editTodo, todoToEdit, closeModal } =
+    React.useContext(TodoContext);
 
   const [newTodoValue, setNewTodoValue] = React.useState("");
   const [dueDate, setDueDate] = React.useState("");
@@ -14,23 +16,53 @@ function TodoForm() {
   const [anticipo, setAnticipo] = React.useState(""); // Estado para el anticipo
   const [resta, setResta] = React.useState(""); // Estado para la cantidad restante
   const onSubmit = (event) => {
-    event.preventDefault();
-    addTodo(
-      newTodoValue,
-      dueDate,
-      description,
-      printType,
-      sides,
-      acabado,
-      total,
-      anticipo,
-      resta
-    );
-    setOpenModal(false);
-  };
+    if (todoToEdit) {
+      // Si existe un TODO a editar, llama a la función de editar
+      editTodo({
+        ...todoToEdit,
+        text: newTodoValue,
+        dueDate,
+        description,
+        printType,
+        sides,
+        acabado,
+        total,
+        anticipo,
+        resta,
+      });
+    } else {
+      // Si no hay TODO a editar, crea uno nuevo
+      addTodo(
+        newTodoValue,
+        dueDate,
+        description,
+        printType,
+        sides,
+        acabado,
+        total,
+        anticipo,
+        resta
+      );
+    }
 
+    closeModal();
+  };
+  useEffect(() => {
+    if (todoToEdit) {
+      setNewTodoValue(todoToEdit.text);
+      setDueDate(todoToEdit.dueDate);
+      setDescription(todoToEdit.description);
+      setPrintType(todoToEdit.printType);
+      setSides(todoToEdit.sides);
+      setAcabado(todoToEdit.acabado);
+      setTotal(todoToEdit.total);
+      setAnticipo(todoToEdit.anticipo);
+      setResta(todoToEdit.resta);
+    }
+  }, [todoToEdit]);
   const onCancel = () => {
     setOpenModal(false);
+    closeModal();
   };
   const onChange = (event) => {
     setNewTodoValue(event.target.value);
@@ -55,12 +87,16 @@ function TodoForm() {
     setAnticipo(anticipoValue);
     setResta((parseFloat(total) || 0) - anticipoValue);
   };
+
+  // Maneja el envío del formulario
+
   return (
     <form onSubmit={onSubmit}>
-      <label>Escribe el numero de contacto</label>
+      {/* Los campos del formulario permanecen igual */}
+      <label>Escribe el número de contacto</label>
       <input
         value={newTodoValue}
-        onChange={onChange}
+        onChange={(e) => setNewTodoValue(e.target.value)}
         required
         placeholder="6183006203"
       />
@@ -69,10 +105,10 @@ function TodoForm() {
       <input
         type="datetime-local"
         value={dueDate}
-        onChange={onChangeDate}
+        onChange={(e) => setDueDate(e.target.value)}
         required
       />
-      <label>Detalles de impresion</label>
+      <label>Detalles de impresión</label>
       <div className="selectores">
         <select
           value={printType}
@@ -89,21 +125,20 @@ function TodoForm() {
           <option value="x1 lado">x1 lado</option>
           <option value="x2 lados">x2 lados</option>
         </select>
-        {/* acabado combobox */}
+
         <select value={acabado} onChange={(e) => setAcabado(e.target.value)}>
           <option value="">Selecciona una opción</option>
           <option value="Grapado">Grapado</option>
           <option value="Engargolado">Engargolado</option>
         </select>
       </div>
-      <label>Notas adicionales</label>
+      <label>Total de juegos y notas adicionales</label>
       <textarea
         value={description}
-        onChange={onChangeDescription}
+        onChange={(e) => setDescription(e.target.value)}
         placeholder="Descripción del trabajo"
       />
       <div className="cantidades">
-        {/* Input para el total */}
         <div>
           <label>Total del pedido: </label>
           <input
@@ -116,7 +151,6 @@ function TodoForm() {
           />
         </div>
         <div>
-          {/* Input para el anticipo */}
           <label>Anticipo: </label>
           <input
             className="inputstyle"
@@ -128,7 +162,6 @@ function TodoForm() {
           />
         </div>
         <div>
-          {/* Muestra el restante */}
           <label>Cantidad restante: </label>
           <input
             className="inputstyle"
@@ -147,8 +180,8 @@ function TodoForm() {
         >
           Cancelar
         </button>
-        <button type="" className="TodoForm-button--add">
-          Agregar
+        <button type="submit" className="TodoForm-button--add">
+          {todoToEdit ? "Guardar cambios" : "Agregar"}
         </button>
       </div>
     </form>

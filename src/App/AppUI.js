@@ -19,6 +19,7 @@ function AppUI() {
     deleteTodo,
     openModal,
     setOpenModal,
+    openEditModal, // Importa la función para abrir el modal de edición
   } = React.useContext(TodoContext);
 
   searchedTodos.forEach((todo) => {
@@ -56,6 +57,7 @@ function AppUI() {
               total={todo.total}
               anticipo={todo.anticipo}
               resta={todo.resta}
+              onEdit={() => openEditModal(todo.id)} // Pasa la f
             />
           ))}
         </TodoList>

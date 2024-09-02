@@ -68,18 +68,22 @@ function TodoItem(props) {
           <div className="TodoItem-dueDateContainer">
             <p className="">
               <FaTasks className="TodoItem-icon" />
-              <span className="subtitulo">Notas adicionales:</span>
+              <span className="subtitulo">
+                Total de juegos y notas adicionales
+              </span>
               <span className="texto_normal"> {props.description}</span>
             </p>
           </div>
         )}
 
+        <button className="edit-button" onClick={() => props.onEdit(props.id)}>
+          <FaEdit /> Editar
+        </button>
         <div className="TodoItem-titulo">
           <CompleteIcon
             completed={props.completed}
             onComplete={props.onComplete}
           />
-          <FaEdit />
         </div>
       </li>
     </div>

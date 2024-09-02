@@ -76,3 +76,17 @@
 }
 
 
+.edit-button {
+   background-color: #0078D7; /* Color de fondo del botón */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  padding: 10px 15px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+  transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+  background-color: #005a9e; /* Color de fondo cuando se pasa el cursor sobre el botón */
+}
