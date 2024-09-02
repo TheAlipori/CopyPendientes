@@ -30,3 +30,13 @@
     fill: 0078D7;
   }
 
+  .Icon-container-check.incomplete {
+    color: red;
+  }
+  .Icon-container-check.inProgress {
+    color: orange;
+  }
+  .Icon-container-check.completed {
+    color: #0078D7;
+  }
+  

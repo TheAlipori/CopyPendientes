@@ -81,8 +81,8 @@ function TodoItem(props) {
         </button>
         <div className="TodoItem-titulo">
           <CompleteIcon
-            completed={props.completed}
-            onComplete={props.onComplete}
+            status={props.status}
+            onStatusChange={props.onStatusChange}
           />
         </div>
       </li>

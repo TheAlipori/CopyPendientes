@@ -28,6 +28,7 @@ function TodoProvider({ children }) {
     dueDate,
     description,
     printType,
+
     sides,
     acabado,
     total,
@@ -39,7 +40,7 @@ function TodoProvider({ children }) {
     newTodos.push({
       id,
       text,
-      completed: false,
+      status: "incomplete", // Establece el estado inicial
       dueDate,
       description,
       printType, // Agregar el tipo de impresión
@@ -52,12 +53,7 @@ function TodoProvider({ children }) {
     saveTodos(newTodos);
   };
   const completeTodo = (id) => {
-    const newTodos = [...todos];
-    const todoIndex = newTodos.findIndex((todo) => todo.id === id);
-    if (todoIndex !== -1) {
-      newTodos[todoIndex].completed = true;
-      saveTodos(newTodos);
-    }
+    updateTodoStatus(id, "completed");
   };
   const deleteTodo = (id) => {
     const newTodos = [...todos];
@@ -83,6 +79,15 @@ function TodoProvider({ children }) {
     setOpenModal(false);
     setTodoToEdit(null); // Reinicia el estado de edición cuando el modal se cierra
   };
+  const updateTodoStatus = (id, newStatus) => {
+    const newTodos = todos.map((todo) =>
+      todo.id === id ? { ...todo, status: newStatus } : todo
+    );
+    saveTodos(newTodos);
+  };
+  const markTodoAsIncomplete = (id) => updateTodoStatus(id, "incomplete");
+  const markTodoAsInProgress = (id) => updateTodoStatus(id, "inProgress");
+  const markTodoAsCompleted = (id) => updateTodoStatus(id, "completed");
 
   return (
     <TodoContext.Provider
@@ -103,6 +108,10 @@ function TodoProvider({ children }) {
         openEditModal, // Asegúrate de incluir esta función
         closeModal, // Asegúrate de incluir esta función
         todoToEdit, // Asegúrate de incluir el todo a editar
+        markTodoAsIncomplete,
+        markTodoAsInProgress,
+        markTodoAsCompleted,
+        updateTodoStatus,
       }}
     >
       {children}

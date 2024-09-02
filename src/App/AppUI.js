@@ -20,11 +20,13 @@ function AppUI() {
     openModal,
     setOpenModal,
     openEditModal, // Importa la función para abrir el modal de edición
+    onStatusChange,
+    updateTodoStatus,
+    markTodoAsIncomplete,
+    markTodoAsInProgress,
+    markTodoAsCompleted,
   } = React.useContext(TodoContext);
 
-  searchedTodos.forEach((todo) => {
-    console.log(todo.resta);
-  });
   return (
     <>
       <div className="container">
@@ -46,18 +48,23 @@ function AppUI() {
             <TodoItem
               key={todo.id}
               text={todo.text}
-              completed={todo.completed}
+              status={todo.status} // Usa status en lugar de completed
               dueDate={todo.dueDate}
               description={todo.description}
-              onComplete={() => completeTodo(todo.id)}
+              onStatusChange={(newStatus) => {
+                if (newStatus === "completed") markTodoAsCompleted(todo.id);
+                else if (newStatus === "inProgress")
+                  markTodoAsInProgress(todo.id);
+                else markTodoAsIncomplete(todo.id);
+              }}
               onDelete={() => deleteTodo(todo.id)}
-              printType={todo.printType} // Pasando printType al TodoItem
+              printType={todo.printType}
               sides={todo.sides}
               acabado={todo.acabado}
               total={todo.total}
               anticipo={todo.anticipo}
               resta={todo.resta}
-              onEdit={() => openEditModal(todo.id)} // Pasa la f
+              onEdit={() => openEditModal(todo.id)}
             />
           ))}
         </TodoList>
