@@ -2,9 +2,8 @@
   }
   .Icon-container-delete {
     cursor: pointer;
-    color: #BD1622;
     position: absolute; /* Posiciona el ícono de borrar en una ubicación específica */
-    top: 10px; /* Ajusta el espacio desde la parte superior */
+    top: 3px; /* Ajusta el espacio desde la parte superior */
     right: 10px; /* Ajusta el espacio desde el borde derecho */
 
   }
@@ -24,7 +23,7 @@
   }
   
   .Icon-container-delete:hover .Icon-svg{
-    fill: red;
+    fill: #BD1622;
   }
   .Icon-container-check:hover .Icon-svg{
     fill: 0078D7;

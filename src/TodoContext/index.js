@@ -13,7 +13,11 @@ function TodoProvider({ children }) {
   const [searchValue, setSearchValue] = React.useState("");
   const [openModal, setOpenModal] = React.useState(false);
 
-  const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  // const completedTodos = todos.filter((todo) => !!todo.completed).length;
+  const completedTodos = todos.filter(
+    (todo) => todo.status === "completed"
+  ).length;
+
   const totalTodos = todos.length;
   const [todoToEdit, setTodoToEdit] = React.useState(null);
 
@@ -56,11 +60,18 @@ function TodoProvider({ children }) {
     updateTodoStatus(id, "completed");
   };
   const deleteTodo = (id) => {
-    const newTodos = [...todos];
-    const todoIndex = newTodos.findIndex((todo) => todo.id === id);
-    if (todoIndex !== -1) {
-      newTodos.splice(todoIndex, 1);
-      saveTodos(newTodos);
+    const confirmDelete = window.confirm(
+      "¿Estás seguro de que quieres eliminar este pendiente?"
+    );
+
+    if (confirmDelete) {
+      const newTodos = [...todos];
+      const todoIndex = newTodos.findIndex((todo) => todo.id === id);
+
+      if (todoIndex !== -1) {
+        newTodos.splice(todoIndex, 1);
+        saveTodos(newTodos);
+      }
     }
   };
   const editTodo = (updatedTodo) => {
@@ -80,9 +91,26 @@ function TodoProvider({ children }) {
     setTodoToEdit(null); // Reinicia el estado de edición cuando el modal se cierra
   };
   const updateTodoStatus = (id, newStatus) => {
-    const newTodos = todos.map((todo) =>
-      todo.id === id ? { ...todo, status: newStatus } : todo
+    const confirmChange = window.confirm(
+      "¿Estás seguro de que quieres cambiar al siguiente estado?"
     );
+
+    if (!confirmChange) return; // Si el usuario cancela, no se realiza el cambio
+
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        // Determina el nuevo estado basado en el estado actual
+        const newStatus =
+          todo.status === "incomplete"
+            ? "inProgress"
+            : todo.status === "inProgress"
+            ? "completed"
+            : "incomplete"; // Vuelve a "incomplete" después de "completed"
+        return { ...todo, status: newStatus };
+      }
+      return todo;
+    });
+
     saveTodos(newTodos);
   };
   const markTodoAsIncomplete = (id) => updateTodoStatus(id, "incomplete");

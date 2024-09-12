@@ -13,11 +13,36 @@ import React from "react";
 import "./TodoItem.css";
 
 function TodoItem(props) {
+  const calculateTimeRemaining = (dueDate) => {
+    const now = new Date();
+    const due = new Date(dueDate);
+    const timeDiff = due - now;
+
+    if (timeDiff <= 0) {
+      return "El tiempo ha expirado";
+    }
+
+    const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor(
+      (timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+    return `Faltan ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos para la entrega.`;
+  };
+
+  // Calcula el tiempo restante para la fecha de entrega del TODO
+  const timeRemaining = props.dueDate
+    ? calculateTimeRemaining(props.dueDate)
+    : "";
+
   return (
     <div className="TodoItem-container">
-      <li className="TodoItem-list">
+      <div className="div_superior">
         <DeleteIcon onDelete={props.onDelete} />
-
+      </div>
+      <li className="TodoItem-list">
         <div className="TodoItem-titulo">
           <FaWhatsapp className="TodoItem-icon" />
           <p className={"subtitulo2"}>
@@ -25,7 +50,6 @@ function TodoItem(props) {
             {props.text}
           </p>
         </div>
-
         {props.dueDate && (
           <div className="TodoItem-dueDateContainer">
             <FaCalendarAlt className="TodoItem-icon" />
@@ -35,10 +59,10 @@ function TodoItem(props) {
               </span>
               {new Date(props.dueDate).toLocaleString()}{" "}
             </p>
+
             <p className=""> </p>
           </div>
         )}
-
         {props.printType && props.sides && props.acabado && (
           <div className="TodoItem-dueDateContainer">
             <FaPrint className="TodoItem-icon" />
@@ -48,7 +72,6 @@ function TodoItem(props) {
             </p>
           </div>
         )}
-
         {props.total && (
           <div className="TodoItem-dueDateContainer">
             <p className="">
@@ -75,17 +98,27 @@ function TodoItem(props) {
             </p>
           </div>
         )}
-
-        <button className="edit-button" onClick={() => props.onEdit(props.id)}>
-          <FaEdit /> Editar
-        </button>
+        <p className="parrafo">{timeRemaining}</p>{" "}
+        {/* Muestra el tiempo restante */}
+        <div className="editar">
+          <button
+            className="edit-button"
+            onClick={() => props.onEdit(props.id)}
+          >
+            <FaEdit />
+            Editar
+          </button>
+        </div>
+      </li>
+      <div className="div_inferior">
+        {" "}
         <div className="TodoItem-titulo">
           <CompleteIcon
             status={props.status}
             onStatusChange={props.onStatusChange}
           />
         </div>
-      </li>
+      </div>
     </div>
   );
 }

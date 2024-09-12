@@ -1,9 +1,9 @@
-import { BsCheckCircleFill } from "react-icons/bs";
+import { BsFillForwardFill } from "react-icons/bs";
 import { TiDelete } from "react-icons/ti";
 import "./TodoIcon.css";
 
 const iconTypes = {
-  check: (color) => <BsCheckCircleFill className="Icon-svg" fill={color} />,
+  check: (color) => <BsFillForwardFill className="Icon-svg" fill={color} />,
   delete: (color) => <TiDelete className="Icon-svg" fill={color} />,
 };
 

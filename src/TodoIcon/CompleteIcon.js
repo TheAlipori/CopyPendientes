@@ -4,9 +4,9 @@ import { TodoIcon } from "./";
 function CompleteIcon({ status, onStatusChange }) {
   // Define los colores y los textos para cada estado
   const statusInfo = {
-    incomplete: { color: "red", text: "No completado" },
-    inProgress: { color: "orange", text: "En progreso" },
-    completed: { color: "#0078D7", text: "Completado" },
+    incomplete: { color: "white", text: "No completado" },
+    inProgress: { color: "white", text: "En progreso" },
+    completed: { color: "white", text: "Completado" },
   };
 
   // Maneja el clic para cambiar el estado
