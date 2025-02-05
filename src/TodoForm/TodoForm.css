@@ -1,102 +1,183 @@
-form {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-    
-    padding: 30px;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
+html, body {
+  height: 100%;
+}
+
+/* Estilos generales del formulario */
+form {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 500px;
+  width: 90%;
+}
+
+/* Etiquetas */
+label {
+  font-size: 1.2rem;
+  color: #0078D7;
+  margin-bottom: 5px;
+  font-weight: bold;
+  align-self: flex-start;
+}
+
+/* Área de texto */
+textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2px solid #0078D7;
+  font-size: 1rem;
+  resize: none;
+  margin-bottom: 10px;
+}
+
+textarea::placeholder {
+  color: #aaaaaa;
+}
+
+/* Estilos para inputs específicos */
+.inputstyle {
+  width: 100%;
+  max-width: 180px; /* Mantiene un máximo, pero se adapta en pantallas pequeñas */
+  margin-bottom: 10px;
+}
+
+/* Contenedor de cantidades (inputs apilados) */
+/* Contenedor de cantidades: cada fila se apila verticalmente */
+.cantidades {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+/* Aseguramos que cada fila ocupe el 100% */
+.cantidades > div {
+  width: 100%;
+}
+
+/* Etiquetas: se muestran como bloques para forzar el salto de línea */
+.cantidades label {
+  display: block;
+  font-size: 1.2rem;
+  color: #0078D7;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Inputs: usamos todo el ancho disponible */
+.inputstyle {
+  width: 100%;
+  max-width: 180px; /* en pantallas grandes, se limita */
+  margin-bottom: 10px;
+}
+
+/* En móviles, eliminamos la limitación de ancho */
+@media (max-width: 600px) {
+  .inputstyle {
+    max-width: 100%;
   }
-  
+}
+
+/* Contenedor de selects */
+.selectores {
+  display: flex;  /* Corregido */
+  gap: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Estilo para el select */
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  color: #333;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 10px;
+}
+
+select:focus {
+  border-color: #0078d7;
+  box-shadow: 0 0 5px rgba(0, 120, 215, 0.5);
+}
+
+/* Contenedor de botones */
+.TodoForm-buttonContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+}
+
+/* Estilos comunes de botones */
+.TodoForm-button--cancel,
+.TodoForm-button--add {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Botón Cancelar */
+.TodoForm-button--cancel {
+  background-color: #ff4d4d;
+  color: white;
+}
+
+.TodoForm-button--cancel:hover {
+  background-color: #ff0000;
+  transform: scale(1.05);
+}
+
+/* Botón Agregar */
+.TodoForm-button--add {
+  background-color: #0078D7;
+  color: white;
+}
+
+.TodoForm-button--add:hover {
+  background-color: #005bb5;
+  transform: scale(1.05);
+}
+
+/* Media Queries para hacerlo responsivo */
+@media (max-width: 600px) {
+  form {
+    padding: 20px;
+    width: 95%;
+  }
+
   label {
-    font-size: 1.2rem;
-    color: #0078D7;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
-  textarea {
-    width: 100%;
-    min-height: 100px;
-    padding: 10px;
-    border-radius: 10px;
-    border: 2px solid #0078D7;
     font-size: 1rem;
-    resize: none;
-    margin-bottom: 10px;
   }
-  .inputstyle{
-    width: 180px; /* Ajusta el ancho según sea necesario */
-    margin-bottom: 10px; /* Espacio entre inputs */
+
+  textarea, select {
+    font-size: 0.9rem;
   }
-  .cantidades{
-    display: flex;
-    flex-direction: column; /* Para que los inputs se apilen verticalmente */
-    align-items: flex-end; /* Alinea los items al final del contenedor (derecha) */
-  }
-  
-  textarea::placeholder {
-    color: #aaaaaa;
-  }
-  
-  .TodoForm-buttonContainer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-  }
-  
+
   .TodoForm-button--cancel,
   .TodoForm-button--add {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    width: 48%;
+    font-size: 0.9rem;
+    padding: 8px;
   }
-  
-  .TodoForm-button--cancel {
-    background-color: #ff4d4d;
-    color: white;
-  }
-  
-  .TodoForm-button--cancel:hover {
-    background-color: #ff0000;
-    transform: scale(1.05);
-  }
-  
-  .TodoForm-button--add {
-    background-color: #0078D7;
-    color: white;
-  }
-  
-  .TodoForm-button--add:hover {
-    background-color: #005bb5;
-    transform: scale(1.05);
-  }
-  select {
-    padding-bottom: 10px;
-    padding-top: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    color: #333;
-    cursor: pointer;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 10px;
-    margin-left: 5px;
-  }
-  
-  select:focus {
-    border-color: #0078d7;
-    box-shadow: 0 0 5px rgba(0, 120, 215, 0.5);
-  }
-  .selectores {
-    display: flexbox; /* Usa flexbox para alinear los selects en una fila */
-    gap: 5px; /* Espacio entre los selects */
-    margin-bottom: 5px; /* Espacio debajo del contenedor */
-  }
+}

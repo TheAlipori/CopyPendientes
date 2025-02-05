@@ -1,18 +1,16 @@
 .modal-overlay {
+  background: rgba(0, 0, 0, 0.582); /* Fondo blanco semitransparente */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: white;
   display: flex;
   justify-content: center;
   padding: 20px;
   overflow-y: auto;
-  /* Aseguramos que cubra toda la pantalla incluso en scroll */
   min-height: 100vh;
 }
-
 .modal-container {
   padding: 20px;
   border-radius: 15px;

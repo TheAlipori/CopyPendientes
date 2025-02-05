@@ -1,54 +1,78 @@
 body {
-  height: 100%;
+  min-height: 100vh;
   margin: 0;
   background: linear-gradient(to right, rgb(5, 117, 230), rgb(29, 112, 183));
-  margin: 0;
-  font-family: 'Quicksand';
+  font-family: 'Quicksand', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  padding: 1rem; /* Espacio de seguridad para móviles */
 }
+
 .body-modal-open {
   overflow: hidden;
 }
 
 code {
-  font-family: Quicksand
+  font-family: Quicksand, monospace;
 }
+
 .container {
-  width:80%; /* Anchura del 90% del viewport */
-  
-  margin: 40px auto 0 auto; /* Centrará el contenedor horizontalmente */
-  padding: 20px; /* Espaciado interno */
-  background-color: white; /* Color de fondo claro */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
-  border-radius: 30px; /* Bordes redondeados */
-  
+  width: 100%;
+  max-width: 100%; /* Máximo ancho en móvil */
+  min-height: calc(100vh - 2rem); /* Altura mínima considerando el padding del body */
+  margin: 1rem auto;
+  padding: 1.5rem;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  box-sizing: border-box; /* Importante para el padding */
 }
 
 .logo {
-  display: block; /* Asegura que el logo se trate como un elemento de bloque */
-  width: 300px; /* Ajusta el tamaño según sea necesario */
-  height: auto; /* Mantiene la proporción de la imagen */
-  z-index: 9999; /* Asegura que esté siempre visible sobre otros elementos */
-  pointer-events: none; /* Evita que la imagen interfiera con la interacción de otros elementos */
-  margin: 0 auto; /* Centra el logo horizontalmente */
-}
-.titulo{
-  font-size: 3rem;
-  color: #0078D7;
-  text-align: center; /* Centra el texto horizontalmente */
-  display: flex;
-  justify-content: center; /* Centra el texto en su contenedor */
-  align-items: center; /* Alinea el texto verticalmente */
+  display: block;
+  width: 100%;
+  max-width: 300px; /* Máximo tamaño pero se ajusta en móvil */
+  height: auto;
+  margin: 0 auto;
+  pointer-events: none;
 }
 
-@media (min-width: 1024px) {
+.titulo {
+  font-size: 2rem; /* Tamaño base para móvil */
+  color: #0078D7;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+/* Tablet: 768px en adelante */
+@media (min-width: 768px) {
   .container {
-    width: 40%; /* El contenedor ocupará el 40% del ancho en pantallas grandes */
+    width: 80%;
+    max-width: 800px; /* Limitar crecimiento */
+    margin: 2rem auto;
+  }
+  
+  .titulo {
+    font-size: 2.5rem;
   }
 }
-@media (min-width: 1524px) {
+
+/* Desktop: 1024px en adelante */
+@media (min-width: 1024px) {
   .container {
-    width: 20%; /* El contenedor ocupará el 40% del ancho en pantallas grandes */
+    width: 60%;
+    max-width: 600px; /* Un poco más angosto */
+  }
+}
+
+/* Pantallas grandes: 1440px en adelante */
+@media (min-width: 1440px) {
+  .container {
+    width: 25%; /* Un cuarto de la pantalla */
+    max-width: 400px; /* Máximo para mantener legibilidad */
+  }
+  
+  .titulo {
+    font-size: 3rem;
   }
 }
