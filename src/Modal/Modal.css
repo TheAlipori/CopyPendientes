@@ -7,9 +7,13 @@
   background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
-  align-items: center;
-  overflow-y: auto; /* Permite scroll en el overlay si es necesario */
-  padding: 20px; /* Espacio alrededor del modal en móvil */
+  padding: 20px;
+  overflow-y: auto;
+  
+  /* Centrado vertical solo en escritorio */
+  @media (min-width: 768px) {
+      align-items: center;
+  }
 }
 
 .modal-container {
@@ -17,18 +21,24 @@
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-  width: 90%; /* Más ancho en móvil */
+  width: 90%;
   max-width: 500px;
   position: relative;
   animation: modalFadeIn 0.4s ease;
+  overflow-y: auto;
   
-  /* Nuevas propiedades para limitar altura y permitir scroll */
-  max-height: 90vh; /* Limita la altura máxima */
-  overflow-y: auto; /* Hace scrollable el contenido interno */
+  /* Altura máxima adaptativa */
+  max-height: 90vh;
   
-  /* Para dispositivos muy pequeños */
+  /* Para móviles pequeños */
   @media (max-height: 600px) {
       max-height: 85vh;
+  }
+  
+  /* Alinear arriba en móvil */
+  @media (max-width: 767px) {
+      margin-top: 20px;
+      align-self: flex-start; /* Fuerza alineación superior */
   }
 }
 
