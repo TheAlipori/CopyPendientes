@@ -4,48 +4,51 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: white;
   display: flex;
   justify-content: center;
   padding: 20px;
   overflow-y: auto;
-  
-  /* Centrado vertical solo en escritorio */
-  @media (min-width: 768px) {
-      align-items: center;
-  }
+  /* Aseguramos que cubra toda la pantalla incluso en scroll */
+  min-height: 100vh;
 }
 
 .modal-container {
-  background-color: white;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
   width: 100%;
-  max-width: 500px;
+  max-width: 600px; /* Opcional: limita el ancho máximo */
   position: relative;
   animation: modalFadeIn 0.4s ease;
-  overflow-y: auto;
+  background: white; /* Asegura que el contenido tenga fondo sólido */
+  margin: auto; /* Centrado vertical en desktop */
   
-  
-  
-  /* Para móviles pequeños */
-  @media (max-height: 600px) {
-      
-  }
-  
-  /* Alinear arriba en móvil */
+  /* Para móviles */
   @media (max-width: 767px) {
-      margin-top: 20px;
-      align-self: flex-start; /* Fuerza alineación superior */
+    margin: 20px 0; /* Eliminamos el margin-top conflictivo */
+    border-radius: 15px 15px 0 0; /* Mejor adaptación a móviles */
+    min-height: calc(100% - 40px); /* Altura completa menos paddings */
   }
 }
 
 /* Asegurar que el contenido no cause overflow */
 .modal-content {
-  margin-top: 20px;
-  max-width: 100%;
-  overflow: hidden;
+  overflow-y: auto;
+  max-height: 80vh; /* Limita altura y permite scroll interno si es necesario */
+}
+
+/* Efecto de entrada */
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Reset para móviles pequeños */
+@media (max-height: 600px) and (max-width: 767px) {
+  .modal-container {
+    max-height: 90vh; /* Prioriza que el contenido sea scrollable */
+  }
 }
 
 /* Opcional: prevenir scroll en el body cuando el modal está abierto */
