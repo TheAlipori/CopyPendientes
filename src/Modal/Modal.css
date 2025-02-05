@@ -1,52 +1,46 @@
 .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7); /* Fondo semitransparente */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-  }
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-y: auto; /* Permite scroll en el overlay si es necesario */
+  padding: 20px; /* Espacio alrededor del modal en móvil */
+}
+
+.modal-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  width: 90%; /* Más ancho en móvil */
+  max-width: 500px;
+  position: relative;
+  animation: modalFadeIn 0.4s ease;
   
-  /* Estilo del contenedor del modal */
-  .modal-container {
-    background-color: white;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra para darle profundidad */
-    width: 80%; /* Ancho del modal */
-    max-width: 500px;
-    position: relative;
-    animation: modalFadeIn 0.4s ease;
-  }
+  /* Nuevas propiedades para limitar altura y permitir scroll */
+  max-height: 90vh; /* Limita la altura máxima */
+  overflow-y: auto; /* Hace scrollable el contenido interno */
   
-  /* Botón de cerrar (la X) */
-  .modal-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
+  /* Para dispositivos muy pequeños */
+  @media (max-height: 600px) {
+      max-height: 85vh;
   }
-  
-  /* Estilo del contenido del modal */
-  .modal-content {
-    margin-top: 20px;
-  }
-  
-  /* Animación para suavizar la entrada del modal */
-  @keyframes modalFadeIn {
-    from {
-      transform: translateY(-50px);
-      opacity: 0;
-    }
-    to {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
+}
+
+/* Asegurar que el contenido no cause overflow */
+.modal-content {
+  margin-top: 20px;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Opcional: prevenir scroll en el body cuando el modal está abierto */
+/* Deberías agregar esta clase al body cuando el modal se abre */
+.body-modal-open {
+  overflow: hidden;
+}

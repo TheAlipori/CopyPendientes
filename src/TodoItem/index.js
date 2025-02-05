@@ -19,7 +19,7 @@ function TodoItem(props) {
     const timeDiff = due - now;
 
     if (timeDiff <= 0) {
-      return "El tiempo ha expirado";
+      return "Ya paso la ventana de entrega, favor de eliminar o actualizar";
     }
 
     const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
