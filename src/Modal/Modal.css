@@ -27,12 +27,11 @@
   animation: modalFadeIn 0.4s ease;
   overflow-y: auto;
   
-  /* Altura máxima adaptativa */
-  max-height: 90vh;
+  
   
   /* Para móviles pequeños */
   @media (max-height: 600px) {
-      max-height: 85vh;
+      
   }
   
   /* Alinear arriba en móvil */

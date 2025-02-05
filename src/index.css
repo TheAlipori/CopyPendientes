@@ -7,6 +7,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.body-modal-open {
+  overflow: hidden;
+}
 
 code {
   font-family: Quicksand
